@@ -69,7 +69,7 @@ class CaptchaEUMethod extends AbstractMethod
   public function spamCheck(): bool
   {
 
-    if (!$this->isFormWithCaptchaEUField() || $this->isCaptchaCheckToSkip()) {
+    if (!$this->isFormWithCaptchaEUField() || $this->isCaptchaCheckToSkip() || !isset($_POST["captcha_at_solution"])) {
       return false;
     }
     $result = $this->checkSolution($_POST["captcha_at_solution"]);
